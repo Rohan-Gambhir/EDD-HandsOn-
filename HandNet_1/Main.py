@@ -18,23 +18,21 @@ def main():
     hands = mpHands.Hands()
     mpDraw = mp.solutions.drawing_utils
 
-
-    while (1):
+    i=1
+    while (i==1):
         success, img = CAP.read()
         plain_img = img.copy()
         plainest_img = img.copy()
         #Convolutional neural net init+act here
         imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)   #mpHands.process() only takes RGB images
         results = hands.process(imgRGB)
-        print(results.multi_hand_landmarks)       #prints len(3) tuples for location
         if (results.multi_hand_landmarks):
             for handLms in results.multi_hand_landmarks:
                 mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
-
         maskedImg = getColorMask(img, plain_img)
 
         #find coords of all points on maskedImg, they needed to control robotic hand hinges
-
+        
 
 
 
@@ -44,6 +42,8 @@ def main():
         cv2.imshow("Masked Image", maskedImg)
         # cv2.imshow("Process Img", img)
         cv2.waitKey(1)
+        i+=1
+    cv2.destroyWindow("Masked Image")
 
 
 if (__name__ == "__main__"):
