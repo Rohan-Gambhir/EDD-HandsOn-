@@ -54,7 +54,7 @@ def calcAngle(vec1:Vector, vec2:Vector, int_point:NamedTuple):
     If they do not intersect at int_point, returns None type"""
     
     #make sure vec1 and vec2 both exist at int_point
-    if (vec1.get_scale_to_point(int_point)==None or vec2.getScale_to_point==None): return None
+    if (vec1.get_scale_to_point(int_point)==None or vec2.getScale_to_point(int_point)==None): return None
     
 
     point = collections.namedtuple("point", "x y z")
