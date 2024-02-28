@@ -43,7 +43,7 @@ class VectorCalculator:
 
 
 
-def three_D_dist(p1:NamedTuple, p2:NamedTuple):
+def threeD_dist(p1:NamedTuple, p2:NamedTuple):
     """Returns dist from p1 to p2, assuming p1 and p2 are 3 points on a 3 dimensional plane"""
     return abs(np.sqrt(np.square(p2.x-p1.x)+np.square(p2.y-p1.y)+np.square(p2.z-p1.z)))
 
@@ -54,13 +54,14 @@ def calcAngle(vec1:Vector, vec2:Vector, int_point:NamedTuple):
     If they do not intersect at int_point, returns None type"""
     
     #make sure vec1 and vec2 both exist at int_point
-    if (vec1.get_scale_to_point(int_point)==None or vec2.getScale_to_point(int_point)==None): return None
+    if (vec1.get_scale_to_point(int_point)==None or vec2.get_scale_to_point(int_point)==None): return None
     
 
     point = collections.namedtuple("point", "x y z")
-    l1 = three_D_dist(int_point, vec1.p)
-    l2 = three_D_dist(int_point, vec2.p)
-    l3 = three_D_dist(vec1.p, vec2.p)
+    l1 = threeD_dist(int_point, vec1.p)
+    l2 = threeD_dist(int_point, vec2.p)
+    l3 = threeD_dist(vec1.p, vec2.p)
     theta = np.arccos((np.square(l1) + np.square(l2) - np.square(l3)) / (2*l1*l2))
     return theta
+
 

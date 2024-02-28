@@ -55,7 +55,14 @@ def cap_single_frame():
             print(handLms)
             mpDraw.draw_landmarks(img, handLms, mpHands.HAND_CONNECTIONS)
     maskedImg = getColorMask(img, plain_img)
+    #landmarks (in order of x values)
 
+    #image of hand with corresponding index for each point
+    
+    #need hand image with landmark indexes to choose angles needed to calculate
+    use_ind = []
+    
+    #add safety net for maximum degrees of movement requested to hand
 
     # cv2.imshow("Unprocessed Img", plainest_img)
     cv2.imshow("Masked Image - I LOVE RIYA", maskedImg)
